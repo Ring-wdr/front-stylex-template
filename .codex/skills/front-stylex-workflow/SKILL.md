@@ -45,6 +45,16 @@ Use this skill for repo-specific execution guidance when you are touching shared
   - Keep `react` / `react-dom` aligned across all app workspaces and the shared React package.
   - Avoid upgrading only one app when the runtime is shared.
 
+- **Theme implementation map**
+  - Shared theme types/constants: `packages/utils/src/theme.ts`
+  - Shared StyleX tokens/themes: `packages/shared-components/src/themeTokens.stylex.ts` and `packages/shared-components/src/themeModes.stylex.ts`
+  - Shared theme switcher UI: `packages/shared-components/src/ThemeModeSwitcher.tsx`
+  - Shared themed showcase: `packages/shared-components/src/FrameworkShowcase.tsx`
+  - Next.js wiring: `apps/nextjs/app/ThemeShowcase.tsx` and `apps/nextjs/app/page.tsx`
+  - TanStack Start wiring: `apps/tanstack-start/src/components/TanStackThemePage.tsx` and `apps/tanstack-start/src/routes/index.tsx`
+  - Astro wiring: `apps/astro/src/components/AstroThemePage.tsx` and `apps/astro/src/pages/index.astro`
+  - Vite wiring: `apps/vite/src/ThemePage.tsx` and `apps/vite/src/App.tsx`
+
 - **Token efficiency**
   - Read only the reference file relevant to the current failure mode.
   - Do not load every framework note unless the task truly spans all of them.

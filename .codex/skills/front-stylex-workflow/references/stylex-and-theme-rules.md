@@ -3,21 +3,25 @@
 ## Shared StyleX rules
 
 - If `stylex.create` references tokens or themes, import them from `.stylex.ts` sources directly when required by the compiler path.
+- In this repo, compiler-sensitive theme sources are:
+  - `packages/shared-components/src/themeTokens.stylex.ts`
+  - `packages/shared-components/src/themeModes.stylex.ts`
 - For Next.js PostCSS emission, there must be a real CSS emission path with `@stylex;`.
 - When a page renders StyleX class names but still looks unstyled, check whether generated CSS is actually present in the loaded stylesheet.
 
 ## Theme rules in this repo
 
 - Theme modes are `light`, `dark`, `system`.
-- Shared theme constants/types live in `packages/utils`.
-- Shared theme tokens/themes and shared theme switcher UI live in `packages/shared-components`.
+- Shared theme constants/types live in `packages/utils/src/theme.ts`.
+- Shared theme tokens/themes and switcher UI live in `packages/shared-components/src/`.
+- The shared showcase reads theme tokens in `packages/shared-components/src/FrameworkShowcase.tsx`.
 
 ## Persistence split by app
 
-- **Next.js**: SSR-safe initial theme comes from cookie.
-- **TanStack Start**: SSR-safe initial theme comes from cookie.
-- **Astro**: SSR-safe initial theme comes from cookie; cookie-based SSR requires server output rather than static prerender.
-- **Vite**: CSR-only; use localStorage and do not add cookie logic unless the app becomes SSR.
+- **Next.js**: SSR-safe initial theme comes from cookie in `apps/nextjs/app/page.tsx`; client switching lives in `apps/nextjs/app/ThemeShowcase.tsx`.
+- **TanStack Start**: SSR-safe initial theme comes from cookie in `apps/tanstack-start/src/routes/index.tsx`; client switching lives in `apps/tanstack-start/src/components/TanStackThemePage.tsx`.
+- **Astro**: SSR-safe initial theme comes from cookie in `apps/astro/src/pages/index.astro`; client switching lives in `apps/astro/src/components/AstroThemePage.tsx`.
+- **Vite**: CSR-only; localStorage persistence lives in `apps/vite/src/ThemePage.tsx`.
 
 ## Hydration safety
 
@@ -27,7 +31,7 @@
 
 ## Common failure patterns
 
-- Missing `@stylex;` in Next CSS entrypoint
+- Missing `@stylex;` in Next CSS entrypoint (`apps/nextjs/app/globals.css`)
 - Importing theme tokens through a non-`.stylex.ts` helper in compiler-sensitive code
 - Vite SSR shell missing `/virtual:stylex.css` and runtime injection in dev
 - Astro using cookie-based theme logic while still building as prerendered static output

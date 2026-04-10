@@ -14,6 +14,16 @@ Trigger cases:
 - build/runtime mismatch debugging
 - multi-app verification
 
+## Theme implementation map
+
+- Shared theme model: `packages/utils/src/theme.ts`
+- Shared tokens/themes: `packages/shared-components/src/themeTokens.stylex.ts` and `packages/shared-components/src/themeModes.stylex.ts`
+- Shared switcher UI: `packages/shared-components/src/ThemeModeSwitcher.tsx`
+- Next.js theme wiring: `apps/nextjs/app/ThemeShowcase.tsx` + `apps/nextjs/app/page.tsx`
+- TanStack Start theme wiring: `apps/tanstack-start/src/components/TanStackThemePage.tsx` + `apps/tanstack-start/src/routes/index.tsx`
+- Astro theme wiring: `apps/astro/src/components/AstroThemePage.tsx` + `apps/astro/src/pages/index.astro`
+- Vite theme wiring: `apps/vite/src/ThemePage.tsx` + `apps/vite/src/App.tsx`
+
 ## Browser verification
 
 When browser proof matters, use:
