@@ -1,10 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { FrameworkShowcase } from '@repo/shared-components';
+import { createServerFn } from '@tanstack/react-start';
+import { getRequestHeader } from '@tanstack/react-start/server';
+import { readThemeModeFromCookieHeader } from '@repo/utils';
+import { TanStackThemePage } from '../components/TanStackThemePage';
+
+const getInitialThemeMode = createServerFn({ method: 'GET' }).handler(async () => {
+  return readThemeModeFromCookieHeader(getRequestHeader('cookie'));
+});
 
 export const Route = createFileRoute('/')({
+  loader: () => getInitialThemeMode(),
   component: IndexPage,
 });
 
 function IndexPage() {
-  return <FrameworkShowcase framework="tanstack-start" />;
+  const initialMode = Route.useLoaderData();
+
+  return <TanStackThemePage initialMode={initialMode} />;
 }

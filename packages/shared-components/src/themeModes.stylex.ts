@@ -1,0 +1,48 @@
+import * as stylex from '@stylexjs/stylex';
+import { themeTokens } from './themeTokens.stylex';
+
+export const lightTheme = stylex.createTheme(themeTokens, {
+  pageBackgroundBase: '#eef4ff',
+  pageBackgroundStart: '#f8fbff',
+  pageBackgroundEnd: '#eef4ff',
+  textPrimary: '#10233d',
+  textSecondary: '#334155',
+  textMuted: '#475569',
+  heroSurface: 'rgba(255, 255, 255, 0.88)',
+  cardSurface: 'rgba(255, 255, 255, 0.94)',
+  borderColor: 'rgba(148, 163, 184, 0.2)',
+  accentSolid: '#1d4ed8',
+  accentText: '#ffffff',
+  accentSoft: 'rgba(29, 78, 216, 0.10)',
+  accentSoftHover: 'rgba(29, 78, 216, 0.18)',
+  controlSurface: 'rgba(255, 255, 255, 0.72)',
+  controlSurfaceHover: 'rgba(255, 255, 255, 0.92)',
+  controlText: '#475569',
+  controlActiveSurface: '#1d4ed8',
+  controlActiveText: '#ffffff',
+  shadowStrong: 'rgba(15, 23, 42, 0.08)',
+  shadowSoft: 'rgba(15, 23, 42, 0.06)',
+});
+
+export const darkTheme = stylex.createTheme(themeTokens, {
+  pageBackgroundBase: '#0b1220',
+  pageBackgroundStart: '#111b2e',
+  pageBackgroundEnd: '#0b1220',
+  textPrimary: '#e6eef8',
+  textSecondary: '#c1cfdf',
+  textMuted: '#9fb0c3',
+  heroSurface: 'rgba(15, 23, 42, 0.82)',
+  cardSurface: 'rgba(15, 23, 42, 0.88)',
+  borderColor: 'rgba(148, 163, 184, 0.28)',
+  accentSolid: '#8fb6ff',
+  accentText: '#08111d',
+  accentSoft: 'rgba(143, 182, 255, 0.18)',
+  accentSoftHover: 'rgba(143, 182, 255, 0.28)',
+  controlSurface: 'rgba(15, 23, 42, 0.68)',
+  controlSurfaceHover: 'rgba(30, 41, 59, 0.92)',
+  controlText: '#cbd5e1',
+  controlActiveSurface: '#8fb6ff',
+  controlActiveText: '#08111d',
+  shadowStrong: 'rgba(2, 6, 23, 0.42)',
+  shadowSoft: 'rgba(2, 6, 23, 0.32)',
+});

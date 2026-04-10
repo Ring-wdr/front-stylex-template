@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { FrameworkShowcase } from '@repo/shared-components';
+import { THEME_COOKIE_NAME, parseThemeMode } from '@repo/utils';
+import { AstroThemePage } from '../components/AstroThemePage';
+
+const initialMode = parseThemeMode(Astro.cookies.get(THEME_COOKIE_NAME)?.value);
 ---
 
 <Layout title="Astro StyleX Monorepo Template">
-  <FrameworkShowcase framework="astro" />
+  <AstroThemePage client:load initialMode={initialMode} />
 </Layout>

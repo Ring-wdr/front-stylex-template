@@ -1,5 +1,10 @@
-import { FrameworkShowcase } from '@repo/shared-components';
+import { cookies } from 'next/headers';
+import { parseThemeMode, THEME_COOKIE_NAME } from '@repo/utils';
+import { ThemeShowcase } from './ThemeShowcase';
 
-export default function Home() {
-  return <FrameworkShowcase framework="nextjs" />;
+export default async function Home() {
+  const cookieStore = await cookies();
+  const initialMode = parseThemeMode(cookieStore.get(THEME_COOKIE_NAME)?.value);
+
+  return <ThemeShowcase initialMode={initialMode} />;
 }

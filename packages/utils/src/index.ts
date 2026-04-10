@@ -1,3 +1,4 @@
+export * from './theme';
 export type FrameworkId = 'nextjs' | 'tanstack-start' | 'astro' | 'vite';
 
 export type ReferenceLink = {

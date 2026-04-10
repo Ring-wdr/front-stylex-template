@@ -4,23 +4,27 @@ import {
   workspacePackages,
   type FrameworkId,
 } from '@repo/utils';
+import { themeTokens } from './themeTokens.stylex';
 
 type FrameworkShowcaseProps = {
   framework: FrameworkId;
+  toolbar?: React.ReactNode;
 };
 
 const MOBILE = '@media (max-width: 900px)' as const;
-const SOFT_BACKGROUND = 'linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%)';
 
-export function FrameworkShowcase({ framework }: FrameworkShowcaseProps) {
+export function FrameworkShowcase({ framework, toolbar }: FrameworkShowcaseProps) {
   const content = getFrameworkContent(framework);
 
   return (
     <main {...stylex.props(styles.page)}>
       <section {...stylex.props(styles.hero)}>
-        <div {...stylex.props(styles.kickerRow)}>
-          <span {...stylex.props(styles.kicker)}>{content.label}</span>
-          <span {...stylex.props(styles.kickerMuted)}>monorepo template</span>
+        <div {...stylex.props(styles.heroHeader, toolbar ? null : styles.heroHeaderCompact)}>
+          <div {...stylex.props(styles.kickerRow)}>
+            <span {...stylex.props(styles.kicker)}>{content.label}</span>
+            <span {...stylex.props(styles.kickerMuted)}>monorepo template</span>
+          </div>
+          {toolbar ? <div {...stylex.props(styles.toolbarSlot)}>{toolbar}</div> : null}
         </div>
         <h1 {...stylex.props(styles.headline)}>{content.headline}</h1>
         <p {...stylex.props(styles.summary)}>{content.summary}</p>
@@ -84,9 +88,9 @@ const styles = stylex.create({
     minHeight: '100vh',
     paddingInline: '24px',
     paddingBlock: '32px 56px',
-    backgroundColor: '#eef4ff',
-    backgroundImage: SOFT_BACKGROUND,
-    color: '#10233d',
+    backgroundColor: themeTokens.pageBackgroundBase,
+    backgroundImage: `linear-gradient(180deg, ${themeTokens.pageBackgroundStart} 0%, ${themeTokens.pageBackgroundEnd} 100%)`,
+    color: themeTokens.textPrimary,
     fontFamily:
       'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   },
@@ -95,16 +99,35 @@ const styles = stylex.create({
     marginInline: 'auto',
     padding: '32px',
     borderRadius: 28,
-    backgroundColor: 'rgba(255, 255, 255, 0.88)',
-    boxShadow: '0 24px 80px rgba(15, 23, 42, 0.08)',
+    backgroundColor: themeTokens.heroSurface,
+    boxShadow: `0 24px 80px ${themeTokens.shadowStrong}`,
     marginBottom: 32,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: themeTokens.borderColor,
+  },
+  heroHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    gap: 16,
+    flexWrap: {
+      default: 'wrap',
+      [MOBILE]: 'wrap',
+    },
+    marginBottom: 16,
+  },
+  heroHeaderCompact: {
+    justifyContent: 'flex-start',
+  },
+  toolbarSlot: {
+    marginLeft: 'auto',
   },
   kickerRow: {
     display: 'flex',
     gap: 12,
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginBottom: 16,
   },
   kicker: {
     display: 'inline-flex',
@@ -112,8 +135,8 @@ const styles = stylex.create({
     borderRadius: 999,
     paddingInline: 12,
     paddingBlock: 6,
-    backgroundColor: '#1d4ed8',
-    color: '#ffffff',
+    backgroundColor: themeTokens.accentSolid,
+    color: themeTokens.accentText,
     fontSize: 13,
     fontWeight: 700,
     letterSpacing: '0.02em',
@@ -121,7 +144,7 @@ const styles = stylex.create({
   },
   kickerMuted: {
     fontSize: 14,
-    color: '#48617c',
+    color: themeTokens.textMuted,
   },
   headline: {
     fontSize: {
@@ -132,14 +155,14 @@ const styles = stylex.create({
     letterSpacing: '-0.03em',
     margin: 0,
     marginBottom: 16,
-    maxWidth: '12ch',
+    maxWidth: '13ch',
   },
   summary: {
     margin: 0,
     marginBottom: 24,
     fontSize: 18,
     lineHeight: 1.7,
-    color: '#334155',
+    color: themeTokens.textSecondary,
     maxWidth: '65ch',
   },
   bullets: {
@@ -147,7 +170,7 @@ const styles = stylex.create({
     paddingLeft: 20,
     display: 'grid',
     gap: 12,
-    color: '#1e293b',
+    color: themeTokens.textPrimary,
   },
   bulletItem: {
     lineHeight: 1.6,
@@ -168,7 +191,7 @@ const styles = stylex.create({
   },
   sectionCopy: {
     margin: 0,
-    color: '#475569',
+    color: themeTokens.textMuted,
     lineHeight: 1.6,
   },
   cardGrid: {
@@ -185,35 +208,39 @@ const styles = stylex.create({
     gap: 10,
     padding: 24,
     borderRadius: 24,
-    backgroundColor: 'rgba(255, 255, 255, 0.94)',
-    boxShadow: '0 20px 60px rgba(15, 23, 42, 0.06)',
+    backgroundColor: themeTokens.cardSurface,
+    boxShadow: `0 20px 60px ${themeTokens.shadowSoft}`,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: 'rgba(148, 163, 184, 0.2)',
+    borderColor: themeTokens.borderColor,
   },
   linkCard: {
     textDecoration: 'none',
     color: 'inherit',
-    transitionProperty: 'transform, box-shadow, border-color',
+    transitionProperty: 'transform, box-shadow, border-color, background-color',
     transitionDuration: '180ms',
     transform: {
       default: 'translateY(0)',
       ':hover': 'translateY(-2px)',
     },
+    backgroundColor: {
+      default: themeTokens.cardSurface,
+      ':hover': themeTokens.accentSoft,
+    },
     borderColor: {
-      default: 'rgba(148, 163, 184, 0.2)',
-      ':hover': 'rgba(29, 78, 216, 0.45)',
+      default: themeTokens.borderColor,
+      ':hover': themeTokens.accentSoftHover,
     },
     boxShadow: {
-      default: '0 20px 60px rgba(15, 23, 42, 0.06)',
-      ':hover': '0 24px 80px rgba(29, 78, 216, 0.14)',
+      default: `0 20px 60px ${themeTokens.shadowSoft}`,
+      ':hover': `0 24px 80px ${themeTokens.shadowStrong}`,
     },
   },
   cardEyebrow: {
     fontSize: 12,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
-    color: '#64748b',
+    color: themeTokens.textMuted,
     fontWeight: 700,
   },
   cardTitle: {
@@ -223,12 +250,12 @@ const styles = stylex.create({
   },
   cardCopy: {
     margin: 0,
-    color: '#475569',
+    color: themeTokens.textMuted,
     lineHeight: 1.6,
     flexGrow: 1,
   },
   linkArrow: {
     fontWeight: 700,
-    color: '#1d4ed8',
+    color: themeTokens.accentSolid,
   },
 });

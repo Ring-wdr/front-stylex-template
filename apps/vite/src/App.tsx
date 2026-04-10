@@ -1,5 +1,5 @@
-import { FrameworkShowcase } from '@repo/shared-components';
+import { ThemePage } from './ThemePage';
 
 export default function App() {
-  return <FrameworkShowcase framework="vite" />;
+  return <ThemePage />;
 }
