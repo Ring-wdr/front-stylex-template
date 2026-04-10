@@ -26,6 +26,7 @@ Use this skill for repo-specific execution guidance when you are touching shared
 
 2. **Implement carefully**
    - Reuse existing shared packages and patterns before adding app-specific duplication.
+   - Prefer StyleX for component/page styling; fall back to plain CSS only when StyleX cannot cleanly cover the spec or framework plumbing requires CSS.
    - Keep SSR apps and CSR-only apps on separate persistence paths when behavior differs.
    - When touching StyleX/theme logic, read `references/stylex-and-theme-rules.md` first.
 

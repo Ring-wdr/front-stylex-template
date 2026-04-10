@@ -52,6 +52,7 @@ Keep runtime marker contracts stable and non-destructive when overlays are appli
 - For framework config changes, shared StyleX/theme work, multi-app runtime verification, or shared dependency upgrades, load and follow `.codex/skills/front-stylex-workflow/SKILL.md`.
 - Use `.claude/skills/playwright-cli/SKILL.md` when browser/runtime proof matters; confirm computed styles for styling fixes instead of relying only on console output.
 - Keep SSR apps (Next.js, TanStack Start, Astro) and the CSR-only Vite app on their existing split persistence/runtime paths unless the task explicitly changes architecture.
+- Prefer StyleX for component and page styling across this repo. Only use plain CSS/CSS modules when StyleX cannot cleanly satisfy the requirement or when framework/compiler plumbing explicitly requires CSS (for example global resets or `@stylex;` emission).
 
 - Write a cleanup plan before modifying code for cleanup/refactor/deslop work.
 - Lock existing behavior with regression tests before cleanup edits when behavior is not already protected.

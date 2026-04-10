@@ -2,6 +2,9 @@
 
 ## Shared StyleX rules
 
+- Prefer StyleX for component and page styling in this repo.
+- Use plain CSS only when StyleX cannot cleanly express the requirement or when framework/compiler plumbing explicitly requires CSS (for example global resets, `@stylex;` emission, or other required global entrypoints).
+- If you fall back to plain CSS, document the specific constraint that prevented a StyleX solution.
 - If `stylex.create` references tokens or themes, import them from `.stylex.ts` sources directly when required by the compiler path.
 - In this repo, compiler-sensitive theme sources are:
   - `packages/shared-components/src/themeTokens.stylex.ts`

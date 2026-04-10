@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { THEME_COOKIE_NAME, parseThemeMode } from '@repo/utils';
+import { AstroAboutPage } from '../components/AstroAboutPage';
+
+const initialMode = parseThemeMode(Astro.cookies.get(THEME_COOKIE_NAME)?.value);
+---
+
+<Layout title="Astro About Page">
+  <AstroAboutPage client:load initialMode={initialMode} />
+</Layout>
