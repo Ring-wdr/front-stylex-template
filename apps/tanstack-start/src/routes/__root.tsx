@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
 import appCss from '../styles.css?url';
+import { DevStyleXInject } from '../components/DevStyleXInject';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -20,6 +21,7 @@ function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <DevStyleXInject />
         <HeadContent />
       </head>
       <body>

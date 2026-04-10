@@ -84,7 +84,8 @@ const styles = stylex.create({
     minHeight: '100vh',
     paddingInline: '24px',
     paddingBlock: '32px 56px',
-    background: SOFT_BACKGROUND,
+    backgroundColor: '#eef4ff',
+    backgroundImage: SOFT_BACKGROUND,
     color: '#10233d',
     fontFamily:
       'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',

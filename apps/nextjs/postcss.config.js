@@ -1,4 +1,3 @@
-const path = require('path');
 const babelConfig = require('./babel.config');
 
 module.exports = {
@@ -6,7 +5,7 @@ module.exports = {
     '@stylexjs/postcss-plugin': {
       include: [
         'app/**/*.{js,jsx,ts,tsx}',
-        path.join(__dirname, '../../packages/shared-components/src/**/*.{js,jsx,ts,tsx}'),
+        '../../packages/shared-components/src/**/*.{js,jsx,ts,tsx}',
       ],
       babelConfig: {
         babelrc: false,
