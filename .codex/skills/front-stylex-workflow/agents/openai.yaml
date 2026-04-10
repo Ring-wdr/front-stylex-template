@@ -1,0 +1,4 @@
+interface:
+  display_name: "Front StyleX Workflow"
+  short_description: "Guardrails for this monorepo"
+  default_prompt: "Use $front-stylex-workflow to inspect, build, verify, and debug changes in this monorepo safely."
