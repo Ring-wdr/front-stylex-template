@@ -1,0 +1,41 @@
+{
+  "name": "front-stylex-template",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "nx": "nx",
+    "dev:nextjs": "pnpm nx run nextjs:dev",
+    "dev:tanstack-start": "pnpm nx run tanstack-start:dev",
+    "dev:astro": "pnpm nx run astro:dev",
+    "dev:vite": "pnpm nx run vite:dev",
+    "build": "pnpm nx run-many -t build --projects=nextjs,tanstack-start,astro,vite --parallel=1",
+    "build:packages": "pnpm nx run-many -t typecheck --projects=shared-components,utils --parallel=1",
+    "build:nextjs": "pnpm nx run nextjs:build",
+    "build:tanstack-start": "pnpm nx run tanstack-start:build",
+    "build:astro": "pnpm nx run astro:build",
+    "build:vite": "pnpm nx run vite:build",
+    "typecheck": "pnpm nx run-many -t typecheck --projects=shared-components,utils,nextjs,tanstack-start,astro,vite --parallel=1",
+    "typecheck:packages": "pnpm nx run-many -t typecheck --projects=shared-components,utils --parallel=1",
+    "typecheck:nextjs": "pnpm nx run nextjs:typecheck",
+    "typecheck:tanstack-start": "pnpm nx run tanstack-start:typecheck",
+    "typecheck:astro": "pnpm nx run astro:typecheck",
+    "typecheck:vite": "pnpm nx run vite:typecheck",
+    "lint": "pnpm nx run-many -t lint --projects=nextjs --parallel=1",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run build",
+    "nx:graph": "pnpm nx graph",
+    "nx:show": "pnpm nx show projects",
+    "nx:affected:build": "pnpm nx affected -t build",
+    "nx:affected:typecheck": "pnpm nx affected -t typecheck",
+    "nx:affected:lint": "pnpm nx affected -t lint"
+  },
+  "devDependencies": {
+    "nx": "22.6.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "utils",
+  "projectType": "library",
+  "root": "packages/utils",
+  "sourceRoot": "packages/utils/src",
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/utils",
+        "command": "pnpm typecheck"
+      }
+    }
+  },
+  "tags": ["type:lib", "scope:shared"]
+}

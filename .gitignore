@@ -1,0 +1,16 @@
+.codex/
+.omx/
+.nx/
+node_modules/
+.pnpm-store/
+.next/
+.vercel/
+.turbo/
+dist/
+build/
+coverage/
+.vite/
+.astro/
+.output/
+.tanstack/
+*.log

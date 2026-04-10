@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "shared-components",
+  "projectType": "library",
+  "root": "packages/shared-components",
+  "sourceRoot": "packages/shared-components/src",
+  "implicitDependencies": ["utils"],
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/shared-components",
+        "command": "pnpm typecheck"
+      }
+    }
+  },
+  "tags": ["type:lib", "scope:shared"]
+}

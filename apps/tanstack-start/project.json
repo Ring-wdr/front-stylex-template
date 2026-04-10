@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "tanstack-start",
+  "projectType": "application",
+  "root": "apps/tanstack-start",
+  "sourceRoot": "apps/tanstack-start/src",
+  "implicitDependencies": ["shared-components"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/tanstack-start",
+        "command": "pnpm dev"
+      },
+      "cache": false
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/tanstack-start",
+        "command": "pnpm build"
+      },
+      "outputs": ["{projectRoot}/.output"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/tanstack-start",
+        "command": "pnpm typecheck"
+      }
+    }
+  },
+  "tags": ["type:app", "framework:tanstack-start"]
+}

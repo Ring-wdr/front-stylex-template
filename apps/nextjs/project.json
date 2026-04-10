@@ -1,0 +1,41 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "nextjs",
+  "projectType": "application",
+  "root": "apps/nextjs",
+  "sourceRoot": "apps/nextjs/app",
+  "implicitDependencies": ["shared-components"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/nextjs",
+        "command": "pnpm dev"
+      },
+      "cache": false
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/nextjs",
+        "command": "pnpm build"
+      },
+      "outputs": ["{projectRoot}/.next"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/nextjs",
+        "command": "pnpm typecheck"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/nextjs",
+        "command": "pnpm lint"
+      }
+    }
+  },
+  "tags": ["type:app", "framework:nextjs"]
+}

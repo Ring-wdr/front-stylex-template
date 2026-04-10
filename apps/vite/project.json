@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "vite",
+  "projectType": "application",
+  "root": "apps/vite",
+  "sourceRoot": "apps/vite/src",
+  "implicitDependencies": ["shared-components"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/vite",
+        "command": "pnpm dev"
+      },
+      "cache": false
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/vite",
+        "command": "pnpm build"
+      },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/vite",
+        "command": "pnpm typecheck"
+      }
+    }
+  },
+  "tags": ["type:app", "framework:vite"]
+}
