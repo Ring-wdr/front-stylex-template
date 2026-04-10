@@ -3,7 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import viteReact from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { nitro } from 'nitro/vite';
 import stylex from '@stylexjs/unplugin';
 
@@ -23,6 +24,7 @@ export default defineConfig({
     }),
     tanstackStart(),
     viteReact(),
+    babel({ presets: [reactCompilerPreset()] }),
   ],
   ssr: {
     noExternal: ['@repo/shared-components', '@repo/utils', '@stylexjs/stylex'],

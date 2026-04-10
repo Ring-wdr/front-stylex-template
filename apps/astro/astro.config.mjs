@@ -10,7 +10,13 @@ const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 export default defineConfig({
   output: 'server',
   adapter: node({ mode: 'standalone' }),
-  integrations: [react()],
+  integrations: [
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
+  ],
   vite: {
     plugins: [
       stylex.vite({
